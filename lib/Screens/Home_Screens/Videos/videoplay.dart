@@ -42,8 +42,7 @@ class _VidePlayScreenState extends State<VidePlayScreen> {
       'video_id': widget.videoid.toString(),
     };
 
-    http.Response response =
-        await http.post(Uri.parse(uservideohistoryurl), body: body, headers: {
+    http.Response response = await http.post(Uri.parse(userVideoHistoryUrl), body: body, headers: {
       "Authorization": "Bearer $userToken",
       "Accept": "application/json",
     });
@@ -110,9 +109,7 @@ class _VidePlayScreenState extends State<VidePlayScreen> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(width: 2.2, color: yellow800)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), border: Border.all(width: 2.2, color: yellow800)),
         margin: EdgeInsets.only(
           top: MediaQuery.of(context).size.height * 0.04,
           left: MediaQuery.of(context).size.width * 0.06,
@@ -134,18 +131,13 @@ class _VidePlayScreenState extends State<VidePlayScreen> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.10,
                     padding: const EdgeInsets.symmetric(horizontal: 12),
-                    decoration: BoxDecoration(
-                        color: yellow800,
-                        borderRadius: BorderRadius.circular(20)),
+                    decoration: BoxDecoration(color: yellow800, borderRadius: BorderRadius.circular(20)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
                           widget.name.toString(),
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: kWhite,
-                              fontWeight: FontWeight.w500),
+                          style: TextStyle(fontSize: 18, color: kWhite, fontWeight: FontWeight.w500),
                         )
                       ],
                     ),
@@ -162,10 +154,7 @@ class _VidePlayScreenState extends State<VidePlayScreen> {
               GestureDetector(
                   onTap: () {
                     // uservideohistoryApi();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => HomePageScreen())));
+                    Navigator.push(context, MaterialPageRoute(builder: ((context) => HomePageScreen())));
                   },
                   child: Icon(
                     Icons.home,

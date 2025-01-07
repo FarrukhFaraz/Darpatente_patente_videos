@@ -30,7 +30,7 @@ class _InfoChapterScreenState extends State<InfoChapterScreen> {
 
     http.Response response = await http.get(
         Uri.parse(
-          getinfochapterurl + widget.id,
+          getInfoChapterUrl + widget.id,
         ),
         headers: {"Authorization": "Bearer $userToken"});
 
@@ -39,7 +39,7 @@ class _InfoChapterScreenState extends State<InfoChapterScreen> {
 
     Map jsonData = jsonDecode(response.body);
     print("response...==" + response.toString());
-    print("response...==" + getinfochapterurl.toString());
+    print("response...==" + getInfoChapterUrl.toString());
 
     if (response.statusCode == 200) {
       print("its josn dtat after 200" + jsonData.toString());

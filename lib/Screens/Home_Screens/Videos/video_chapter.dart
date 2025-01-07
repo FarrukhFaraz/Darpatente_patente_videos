@@ -37,7 +37,7 @@ class _VideoChapterScreenState extends State<VideoChapterScreen> {
     });
 
     http.Response response = await http.get(
-        Uri.parse(vidoeurl + widget.videoid),
+        Uri.parse(videoUrl + widget.videoid),
         headers: {"Authorization": "Bearer $userToken"});
 
     print(userToken);

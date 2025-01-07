@@ -27,17 +27,15 @@ class _DemoScreenState extends State<DemoScreen> {
     setState(() {
       loader = true;
     });
-    http.Response response = await http.get(Uri.parse(demourl),
-        headers: {"Authorization": "Bearer $userToken"});
+    http.Response response = await http.get(Uri.parse(demoUrl), headers: {"Authorization": "Bearer $userToken"});
 
     print(userToken);
 
     Map jsonData = jsonDecode(response.body);
     print("response...==" + response.toString());
-    print("response...==" + demourl.toString());
+    print("response...==" + demoUrl.toString());
 
     if (response.statusCode == 200) {
-
       setState(() {
         loader = false;
       });
@@ -66,9 +64,7 @@ class _DemoScreenState extends State<DemoScreen> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(width: 2.2, color: yellow800)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), border: Border.all(width: 2.2, color: yellow800)),
         margin: EdgeInsets.only(
           top: MediaQuery.of(context).size.height * 0.04,
           left: MediaQuery.of(context).size.width * 0.06,
@@ -94,28 +90,20 @@ class _DemoScreenState extends State<DemoScreen> {
                         child: Container(
                           height: MediaQuery.of(context).size.height * 0.10,
                           padding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: BoxDecoration(
-                              color: yellow800,
-                              borderRadius: BorderRadius.circular(20)),
+                          decoration: BoxDecoration(color: yellow800, borderRadius: BorderRadius.circular(20)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Container(
                                 child: Image(
-                                  image: const AssetImage(
-                                      "assets/images/Last logo.jpeg"),
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.1,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.1,
+                                  image: const AssetImage("assets/images/Last logo.jpeg"),
+                                  height: MediaQuery.of(context).size.height * 0.1,
+                                  width: MediaQuery.of(context).size.width * 0.1,
                                 ),
                               ),
                               Text(
                                 "Demo",
-                                style: TextStyle(
-                                    fontSize: 30,
-                                    color: kWhite,
-                                    fontWeight: FontWeight.w500),
+                                style: TextStyle(fontSize: 30, color: kWhite, fontWeight: FontWeight.w500),
                               )
                             ],
                           ),
@@ -135,17 +123,13 @@ class _DemoScreenState extends State<DemoScreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: ((context) => HomePageScreen())));
+                            Navigator.push(context, MaterialPageRoute(builder: ((context) => HomePageScreen())));
                           },
                           child: Icon(
                             Icons.home,
                             size: 40,
                           ),
                         ),
-                        
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
@@ -204,15 +188,11 @@ class _DemoScreenState extends State<DemoScreen> {
               width: MediaQuery.of(context).size.width * 0.70,
               alignment: Alignment.center,
 
-              decoration: BoxDecoration(
-                  color: background, borderRadius: BorderRadius.circular(14)),
+              decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(14)),
               //  decoration: BoxDecoration(color: klightblue),
               child: Text(
                 _getDemoCategory[index].name.toString(),
-                style: TextStyle(
-                    fontSize: 24,
-                    color: yellow800,
-                    fontWeight: FontWeight.w400),
+                style: TextStyle(fontSize: 24, color: yellow800, fontWeight: FontWeight.w400),
               ),
             ),
           );

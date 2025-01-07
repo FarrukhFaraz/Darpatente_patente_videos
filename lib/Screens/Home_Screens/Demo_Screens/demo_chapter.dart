@@ -32,7 +32,7 @@ class _DemoChapterScreenState extends State<DemoChapterScreen> {
     });
     http.Response response = await http.get(
         Uri.parse(
-          getdemochapterurl + widget.id,
+          getDemoChapterUrl + widget.id,
         ),
         headers: {"Authorization": "Bearer $userToken"});
 
@@ -41,7 +41,7 @@ class _DemoChapterScreenState extends State<DemoChapterScreen> {
 
     Map jsonData = jsonDecode(response.body);
     print("response...==" + response.toString());
-    print("response...==" + demourl.toString());
+    print("response...==" + demoUrl.toString());
 
     if (response.statusCode == 200) {
       setState(() {
@@ -65,20 +65,16 @@ class _DemoChapterScreenState extends State<DemoChapterScreen> {
     getDemoChapterApi();
   }
 
-   openExternalLink(String link) async {
-     if (await canLaunchUrl(Uri.parse(link))) {
-       await launchUrl(
-         Uri.parse(link),
-         mode: LaunchMode.externalApplication,
-       );
-     } else {
-       print('can not launch url::::$link');
-       ScaffoldMessenger.of(context)
-           .showSnackBar(SnackBar(content: Text("Youtube is not installed")));
-     }
-
-
-
+  openExternalLink(String link) async {
+    if (await canLaunchUrl(Uri.parse(link))) {
+      await launchUrl(
+        Uri.parse(link),
+        mode: LaunchMode.externalApplication,
+      );
+    } else {
+      print('can not launch url::::$link');
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Youtube is not installed")));
+    }
   }
 
   @override
@@ -88,9 +84,7 @@ class _DemoChapterScreenState extends State<DemoChapterScreen> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(width: 2.2, color: yellow800)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), border: Border.all(width: 2.2, color: yellow800)),
         margin: EdgeInsets.only(
           top: MediaQuery.of(context).size.height * 0.04,
           left: MediaQuery.of(context).size.width * 0.06,
@@ -112,26 +106,20 @@ class _DemoChapterScreenState extends State<DemoChapterScreen> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.10,
                     padding: const EdgeInsets.symmetric(horizontal: 12),
-                    decoration: BoxDecoration(
-                        color: yellow800,
-                        borderRadius: BorderRadius.circular(20)),
+                    decoration: BoxDecoration(color: yellow800, borderRadius: BorderRadius.circular(20)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
                           child: Image(
-                            image: const AssetImage(
-                                "assets/images/Last logo.jpeg"),
+                            image: const AssetImage("assets/images/Last logo.jpeg"),
                             height: MediaQuery.of(context).size.height * 0.1,
                             width: MediaQuery.of(context).size.width * 0.1,
                           ),
                         ),
                         Text(
                           "Demo",
-                          style: TextStyle(
-                              fontSize: 30,
-                              color: kWhite,
-                              fontWeight: FontWeight.w500),
+                          style: TextStyle(fontSize: 30, color: kWhite, fontWeight: FontWeight.w500),
                         )
                       ],
                     ),
@@ -156,10 +144,7 @@ class _DemoChapterScreenState extends State<DemoChapterScreen> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => HomePageScreen())));
+                        Navigator.push(context, MaterialPageRoute(builder: ((context) => HomePageScreen())));
                       },
                       child: Icon(
                         Icons.home,
@@ -213,11 +198,11 @@ class _DemoChapterScreenState extends State<DemoChapterScreen> {
           itemCount: _getDemoChapter.length,
           itemBuilder: (context, index) {
             return GestureDetector(
-              onTap: (){
+              onTap: () {
                 print("link:::::::::::: ${_getDemoChapter[index].link}");
 
-               // openLink(_getDemoChapter[index].link.toString());
-               openExternalLink('${_getDemoChapter[index].link}');
+                // openLink(_getDemoChapter[index].link.toString());
+                openExternalLink('${_getDemoChapter[index].link}');
               },
               child: Container(
                 margin: EdgeInsets.only(
@@ -229,16 +214,11 @@ class _DemoChapterScreenState extends State<DemoChapterScreen> {
                 width: MediaQuery.of(context).size.width * 0.70,
                 alignment: Alignment.center,
 
-                decoration: BoxDecoration(
-                    color: background,
-                    borderRadius: BorderRadius.circular(14)),
+                decoration: BoxDecoration(color: background, borderRadius: BorderRadius.circular(14)),
                 //  decoration: BoxDecoration(color: klightblue),
                 child: Text(
                   _getDemoChapter[index].name.toString(),
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: yellow800,
-                      fontWeight: FontWeight.w400),
+                  style: TextStyle(fontSize: 24, color: yellow800, fontWeight: FontWeight.w400),
                 ),
               ),
             );

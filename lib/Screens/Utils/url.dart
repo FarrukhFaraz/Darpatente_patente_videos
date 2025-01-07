@@ -1,11 +1,11 @@
-String baseurl = "https://driving.darpatentedashboard.com/api/";
-String imageBaseurl = "https://driving.darpatentedashboard.com/";
+String baseurl = "https://darformazione.darpatente.online/api/";
+String imageBaseurl = "https://darformazione.darpatente.online";
 
-String loginurl = baseurl + "user/login";
-String userinfourl = baseurl + "user/info";
-String vidoeurl = baseurl + "chapter/videos/";
-String demourl = baseurl + "demo/category/get";
-String getdemochapterurl = baseurl + "category/demo/get/";
-String infourl = baseurl + "info/category/get";
-String getinfochapterurl = baseurl + "category/info/get/9";
-String uservideohistoryurl = baseurl + 'user/video/history/save';
+String loginUrl = baseurl + "user/login";
+String userInfoUrl = baseurl + "user/info";
+String videoUrl = baseurl + "chapter/videos/";
+String demoUrl = baseurl + "demo/category/get";
+String getDemoChapterUrl = baseurl + "category/demo/get/";
+String infoUrl = baseurl + "info/category/get";
+String getInfoChapterUrl = baseurl + "category/info/get/";
+String userVideoHistoryUrl = baseurl + 'user/video/history/save';

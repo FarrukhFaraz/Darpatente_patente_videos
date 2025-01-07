@@ -64,8 +64,8 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
     // print(phoneControler.text);
     // print(passwordController.text);
 
-    http.Response response = await http.post(Uri.parse(loginurl), body: body);
-    print("loginurll==" + loginurl.toString());
+    http.Response response = await http.post(Uri.parse(loginUrl), body: body);
+    print("loginurll==" + loginUrl.toString());
     print("bodyy" + body.toString());
     debugPrint("loginds;ld" + response.body);
 
@@ -86,17 +86,14 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
       });
       print("userId  $userId");
       print("userToken  $userToken");
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Login Succefully")));
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomePageScreen()));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Succefully")));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePageScreen()));
     } else if (response.statusCode == 500) {
       setState(() {
         loader = false;
       });
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-            "You already login on another device. If you want to login on this device. Please contact admin"),
+        content: Text("You already login on another device. If you want to login on this device. Please contact admin"),
       ));
     } else {
       setState(() {
@@ -206,20 +203,14 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
               autofocus: false,
               autocorrect: false,
               controller: phoneControler,
-              validator: MultiValidator([
-                RequiredValidator(errorText: "Required *"),
-                EmailValidator(errorText: "Not a valid  Email")
-              ]),
+              validator: MultiValidator([RequiredValidator(errorText: "Required *"), EmailValidator(errorText: "Not a valid  Email")]),
               decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: yellow800, width: 2.2)),
+                  focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: yellow800, width: 2.2)),
                   prefixIcon: Icon(
                     Icons.mail,
                     color: kBlack,
                   ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                   hintText: "Enter your Email",
                   hintStyle: TextStyle(color: kBlack)),
             ),
@@ -237,9 +228,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
               autocorrect: false,
               obscureText: _isObscure,
               decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: yellow800, width: 2.2)),
+                  focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: yellow800, width: 2.2)),
                   suffixIcon: IconButton(
                     icon: Icon(
                       _isObscure ? Icons.visibility_off : Icons.visibility,
@@ -255,8 +244,7 @@ class _LoginPageScreenState extends State<LoginPageScreen> {
                     Icons.lock_outline,
                     color: kBlack,
                   ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                   hintText: "Enter your password",
                   hintStyle: TextStyle(color: kBlack)),
             ),
