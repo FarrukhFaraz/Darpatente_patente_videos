@@ -1,43 +1,27 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
+import 'package:screen_protector/screen_protector.dart';
 
 class ScreenProtection {
-  static const MethodChannel _platform = MethodChannel('com.protectionlayer');
+  ScreenProtection._();
 
-  static Future<void> enableScreenProtection() async {
-    if (Platform.isIOS) {
+  static enableScreenProtection() async {
+    if (Platform.isAndroid) {
       if (kDebugMode) {
-        print('ScreenProtection.enableScreenProtection:::::::is ios');
+        print('ScreenProtection.enableScreenProtection::::: Android protection layer');
       }
-      try {
-        var data = await _platform.invokeMethod('enableScreenProtection');
-        if (kDebugMode) {
-          print('ScreenProtection.enableScreenProtection::::: $data');
-        }
-      } on PlatformException catch (e) {
-        if (kDebugMode) {
-          print("Failed to enable screen protection: ${e.message}");
-        }
-      }
+
+      await ScreenProtector.protectDataLeakageWithColor(Colors.white);
+      await ScreenProtector.preventScreenshotOn();
     } else {
       if (kDebugMode) {
-        print('ScreenProtection.enableScreenProtection::::is android');
+        print('ScreenProtection.enableScreenProtection::::: Ios protection layer');
       }
-    }
-  }
 
-  static Future<void> disableScreenProtection() async {
-    if (kDebugMode) {
-      print('ScreenProtection.disableScreenProtection');
-    }
-    try {
-      await _platform.invokeMethod('disableScreenProtection');
-    } on PlatformException catch (e) {
-      if (kDebugMode) {
-        print("Failed to disable screen protection: ${e.message}");
-      }
+      await ScreenProtector.protectDataLeakageWithColor(Colors.white);
+      await ScreenProtector.preventScreenshotOn();
     }
   }
 }
